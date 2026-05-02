@@ -1,0 +1,250 @@
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #2d3436;
+    --card-bg: rgba(255, 255, 255, 0.88);
+    --accent-color: #0984e3;
+    --secondary-color: #74b9ff;
+    --border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #f5f6fa;
+    --card-bg: rgba(30, 30, 30, 0.92);
+    --accent-color: #00cec9;
+    --secondary-color: #74b9ff;
+    --border-color: rgba(255, 255, 255, 0.14);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5vw;
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+header {
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 3rem 1.5rem;
+}
+
+.header-content {
+    max-width: 740px;
+    width: 100%;
+}
+
+.header-content h1 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.05;
+}
+
+.header-content p {
+    margin: 0 0 1.25rem;
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    opacity: 0.95;
+}
+
+.status-badge {
+    display: inline-flex;
+    padding: 0.85rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.24);
+    font-size: 0.9rem;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+}
+
+.container {
+    max-width: 1100px;
+    margin: -70px auto 50px;
+    padding: 0 1.5rem;
+}
+
+.milestone-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(18px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    padding: 2.5rem;
+    margin-bottom: 32px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.milestone-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.card-header h2 {
+    margin: 0;
+    color: var(--accent-color);
+    font-size: clamp(1.25rem, 2vw, 1.65rem);
+}
+
+.label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    opacity: 0.75;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 28px 0;
+}
+
+.img-placeholder {
+    min-height: 180px;
+    background: #dfe6e9;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+}
+
+.img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.content p {
+    margin: 0;
+    line-height: 1.85;
+    font-size: clamp(1rem, 1.2vw, 1.05rem);
+    font-style: italic;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.45rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 2.5rem 1.5rem 3rem;
+    opacity: 0.75;
+}
+
+@media (max-width: 820px) {
+    nav {
+        padding: 1rem 4vw;
+    }
+
+    .container {
+        margin: -60px auto 40px;
+    }
+
+    .milestone-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        min-height: auto;
+        padding: 3.5rem 1.25rem;
+    }
+
+    .header-content h1 {
+        font-size: clamp(2rem, 8vw, 2.6rem);
+    }
+
+    .header-content p {
+        font-size: 1rem;
+    }
+
+    .status-badge {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .image-gallery {
+        gap: 12px;
+    }
+
+    .img-placeholder {
+        min-height: 150px;
+    }
+}
+
+@media (max-width: 500px) {
+    nav {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .milestone-card {
+        padding: 1.5rem;
+    }
+
+    .img-placeholder {
+        min-height: 130px;
+    }
+
+    footer {
+        padding: 2rem 1rem 2.5rem;
+    }
+}
